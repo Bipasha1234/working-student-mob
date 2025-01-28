@@ -63,33 +63,33 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         emit(state.copyWith(isLoading: true));
 
         // Commenting out dynamic login logic
-        // final result = await _loginUseCase(
-        //   LoginParams(
-        //     username: event.username,
-        //     password: event.password,
-        //   ),
-        // );
+        final result = await _loginUseCase(
+          LoginParams(
+            username: event.username,
+            password: event.password,
+          ),
+        );
 
-        // Static credentials check
-        if (event.username == 'bipasha' && event.password == '123456') {
-          emit(state.copyWith(isLoading: false, isSuccess: true));
-          add(
-            NavigateHomeScreenEvent(
-              context: event.context,
-              destination: HomeView(),
-            ),
-          );
-        } else {
-          emit(state.copyWith(isLoading: false, isSuccess: false));
-          showMySnackBar(
-            context: event.context,
-            message: "Invalid Credentials",
-            color: Colors.red,
-          );
-        }
+        // // Static credentials check
+        // if (event.username == 'bipasha' && event.password == '123456') {
+        //   emit(state.copyWith(isLoading: false, isSuccess: true));
+        //   add(
+        //     NavigateHomeScreenEvent(
+        //       context: event.context,
+        //       destination: HomeView(),
+        //     ),
+        //   );
+        // } else {
+        //   emit(state.copyWith(isLoading: false, isSuccess: false));
+        //   showMySnackBar(
+        //     context: event.context,
+        //     message: "Invalid Credentials",
+        //     color: Colors.red,
+        //   );
+        // }
 
         // If dynamic login logic is re-enabled in the future, uncomment the block below:
-        /*
+
         result.fold(
           (failure) {
             emit(state.copyWith(isLoading: false, isSuccess: false));
@@ -110,7 +110,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
             //_homeCubit.setToken(token);
           },
         );
-        */
       },
     );
   }

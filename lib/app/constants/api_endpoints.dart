@@ -23,7 +23,6 @@ class ApiEndpoints {
   static const String getAllBatch = "batch/getAllBatches";
   static const String deleteBatch = "batch/";
 
-
   // ====================== Course Routes ======================
   static const String createCourse = "course/createCourse";
   static const String deleteCourse = "course/";
